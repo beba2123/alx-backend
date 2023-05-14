@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
-"""Discription:> implement a method name get_page that takes two arguments page
-            with default value 1 and page size with default value 10.
-            use assert to verify both arguments are integer greater than zero
-            and also use index_range to find the correct indexes to paginate
-            dataset.
+"""
+0-simple_helper_function module
 """
 
 import csv
