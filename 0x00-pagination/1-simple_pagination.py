@@ -39,10 +39,8 @@ class server:
         assert page > 0 and page_size > 0
 
         indices = index_range(page, page_size)
-        start = indices[0]
-        end = indices[1]
+        dataset = self.dataset()
 
-        try:
-            return self.dataset()[start:end]
-        except IndexError:
+        if indices >= len(dataset):
             return []
+        return dataset[indices]
