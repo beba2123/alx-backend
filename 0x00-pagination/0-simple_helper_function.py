@@ -6,7 +6,6 @@
                  a start index and an end index corresponding to the range
                  of indexes to return in a list for those particular
                  pagination parameters.
-
     Page numbers are 1-indexed, i.e. the first page is page 1.
 '''
 from typing import Tuple
