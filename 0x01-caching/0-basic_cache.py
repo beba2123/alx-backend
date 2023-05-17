@@ -8,7 +8,7 @@ Create a class BasicCache that inherits from BaseCaching
 from base_caching import BaseCaching
 
 
-class BasiCache(BaseCaching):
+class BasicCache(BaseCaching):
     """Base Cache"""
 
     def __init__(self):
