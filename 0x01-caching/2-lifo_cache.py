@@ -1,36 +1,35 @@
 #!/usr/bin/env python3
-""" Create a class LIFOCache that inherits
-    from BaseCaching and is a caching system
+"""
+File: 2-lifo_cache.py
+Desc: This python module contains code for implementing caching
+      system in python.
+Author: Gizachew Bayness
+Date Created: Feb 22, 2023
 """
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """LIFO-CACHE"""
+    """LIFO Cache"""
+    st = []
 
     def __init__(self):
-        super.__init__()
-        self.keys = []
+        '''Intialization'''
+        super().__init__()
 
     def put(self, key, item):
-        """Must assign to the dictionary self.cache_data
-            the item value for the key key
-        """
-
-        if (key is not None or item is not None):
+        """Stores a new key value pairt to the cache"""
+        if (key is not None and item is not None):
             self.cache_data[key] = item
-            if key not in self.keys:
-                self.keys.append(key)
-            else:
-                self.keys.append(self.keys.pop(self.keys.index(key)))
-            if len(self.keys) > BaseCaching.MAX_ITEMS:
-                discard = self.keys.pop(-2)
-                del self.cache_data[discard]
-                print('DISCARD: {:s}'.format(discard))
+            self.st.append(key)
+
+        if (len(self.cache_data) > BaseCaching.MAX_ITEMS):
+            key_to_be_removed = LIFOCache.st[-2]
+            self.cache_data.pop(key_to_be_removed)
+            print('DISCARD: {}'.format(LIFOCache.st.pop(-2)))
 
     def get(self, key):
-        ''' Return value stored in `key` key of cache.
-            If key is None or does not exist in cache, return None. '''
-        if key is not None and key in self.cache_data:
-            return self.cache_data[key]
-        return None
+        """Returns the item based on the key"""
+        if (key is None or key not in self.cache_data.keys()):
+            return None
+        return self.cache_data[key]
